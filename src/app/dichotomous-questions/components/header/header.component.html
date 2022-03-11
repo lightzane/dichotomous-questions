@@ -1,0 +1,12 @@
+<mat-card class="m-3 mt-5 mb-5 mat-elevation-z2" @poppear>
+  <mat-card-content>
+    <h2>
+      <ng-content></ng-content>
+    </h2>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="primary" (click)="emitGetStarted()">
+      {{ clicked ? "Restart" : "Get Started" }}
+    </button>
+  </mat-card-actions>
+</mat-card>

@@ -1,0 +1,43 @@
+<ng-container *ngIf="!dichotomousQuestion; else dataAvailable">
+  <mat-card class="d-flex position-absolute top-50 start-50 translate-middle">
+    <mat-card-content class="px-5 py-3 text-center">
+      <h3>No data available</h3>
+      <!-- Input -->
+      <input #fileInput hidden type="file" (change)="onFileSelect($event, fileInput)" accept="application/json, text/plain" />
+      <!-- Button -->
+      <p>
+        <button mat-raised-button color="primary" (click)="fileInput.click()">
+          <mat-icon>file_upload</mat-icon>
+          <span> Upload a File</span>
+        </button>
+      </p>
+      <p>
+        <button mat-button (click)="downloadData('dichotomous-sample.json', sampleFile)">
+          <mat-icon>file_download</mat-icon>
+          <span> Download Sample</span>
+        </button>
+      </p>
+    </mat-card-content>
+    <mat-card-content *ngIf="fileContent">
+      {{ fileContent | json }}
+    </mat-card-content>
+  </mat-card>
+</ng-container>
+
+<ng-template #dataAvailable>
+  <app-header (getStarted)="getStarted()">
+    {{ dichotomousQuestion?.goal }}
+  </app-header>
+
+  <app-answered *ngFor="let answered of questionsAnswered; let i = index" [answer]="answered.value" [index]="i + 1">
+    {{ answered.question }}
+  </app-answered>
+
+  <app-question *ngIf="currentQuestion as question" (yes)="yes(question)" (no)="no(question)" [initial]="questionsAnswered.length === 0" (back)="back(questionsAnswered[questionsAnswered.length - 1])">
+    {{ question.value }}
+  </app-question>
+
+  <app-footer *ngIf="goal">
+    {{ goal }}
+  </app-footer>
+</ng-template>

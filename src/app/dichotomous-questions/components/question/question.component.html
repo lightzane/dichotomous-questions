@@ -1,0 +1,14 @@
+<mat-card class="m-3 mt-3 mb-0 mat-elevation-z2" [@poppear]="toggleAnim">
+  <mat-card-content>
+    <h3>
+      <ng-content></ng-content>
+    </h3>
+  </mat-card-content>
+  <mat-card-actions class="d-flex justify-content-between">
+    <div>
+      <button mat-button color="primary" (click)="emitYes()">YES</button>
+      <button mat-button color="accent" (click)="emitNo()">NO</button>
+    </div>
+    <div><button *ngIf="!initial" mat-button (click)="emitBack()">Back</button></div>
+  </mat-card-actions>
+</mat-card>

@@ -1,0 +1,12 @@
+<mat-card class="m-3 mt-3 mb-0 mat-elevation-z2">
+  <mat-card-content>
+    <h3 [matBadge]="index" matBadgePosition="before" matBadgePosition="after">
+      <ng-content></ng-content>
+    </h3>
+    <mat-chip-list>
+      <mat-chip [selected]="answer" [color]="answer === 'yes' ? 'primary' : 'accent'" style="text-transform: uppercase">
+        {{ answer }}
+      </mat-chip>
+    </mat-chip-list>
+  </mat-card-content>
+</mat-card>
