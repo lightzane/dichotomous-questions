@@ -27,6 +27,10 @@ export class DichotomousQuestionsComponent {
   /** Can be used for parent component to trigger something like scroll to bottom */
   @Output() onAnswered = new EventEmitter();
 
+  viewSampleData(): void {
+    this.dichotomousQuestion = data;
+  }
+
   getStarted(): void {
     this.goal = null;
     this.questionsAnswered = [];
