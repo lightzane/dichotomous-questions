@@ -1,28 +1,44 @@
 <ng-container *ngIf="!dichotomousQuestion; else dataAvailable">
-  <mat-card class="d-flex position-absolute top-50 start-50 translate-middle">
-    <mat-card-content class="px-5 py-3 text-center">
-      <h3>No data available</h3>
-      <!-- Input -->
-      <input #fileInput hidden type="file" (change)="onFileSelect($event, fileInput)" accept="application/json, text/plain" />
-      <!-- Button -->
-      <p>
-        <button mat-raised-button color="primary" (click)="fileInput.click()">
-          <mat-icon>file_upload</mat-icon>
-          <span> Upload a File</span>
-        </button>
-      </p>
-      <p>
-        <button mat-button (click)="viewSampleData()">
-          <!-- downloadData('dichotomous-sample.json', sampleFile) -->
-          <!-- <mat-icon>file_download</mat-icon> -->
-          <span> View Sample</span>
-        </button>
-      </p>
-    </mat-card-content>
-    <mat-card-content *ngIf="fileContent">
-      {{ fileContent | json }}
-    </mat-card-content>
-  </mat-card>
+  <div class="d-flex position-absolute top-50 start-50 translate-middle">
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <mat-card>
+          <mat-card-content class="px-5 py-3 text-center">
+            <h3>No data available</h3>
+            <!-- Input -->
+            <input #fileInput hidden type="file" (change)="onFileSelect($event, fileInput)" accept="application/json, text/plain" />
+            <!-- Button -->
+            <p>
+              <button mat-raised-button color="primary" (click)="fileInput.click()">
+                <mat-icon>file_upload</mat-icon>
+                <span> Upload JSON</span>
+              </button>
+            </p>
+          </mat-card-content>
+          <mat-card-content *ngIf="fileContent">
+            {{ fileContent | json }}
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <div class="col-md-6">
+        <mat-card>
+          <mat-card-content class="px-5 py-3 text-center">
+            <p>
+              <button mat-stroked-button (click)="viewSampleData()">
+                <!-- downloadData('dichotomous-sample.json', sampleFile) -->
+                <!-- <mat-icon>file_download</mat-icon> -->
+                <span> View Sample</span>
+              </button>
+            </p>
+            <a href="https://github.com/lightzane/dichotomous-questions/tree/main/src/assets#readme" target="_blank"> Write your Own </a>
+          </mat-card-content>
+          <mat-card-content *ngIf="fileContent">
+            {{ fileContent | json }}
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
 </ng-container>
 
 <ng-template #dataAvailable>
