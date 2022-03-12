@@ -1,0 +1,33 @@
+{
+  "$schema": "./dichotomous.schema.json",
+  "goal": "Some things I should do after answering a series of questions",
+  "question": {
+    "value": "Your question here that will be answered by `YES` or `NO`",
+    "answer": {
+      "yes": {
+        "complete": { "text": "Goal has reached and ends the series of question" }
+      },
+      "no": {
+        "next": {
+          "question": {
+            "value": "Do you have a goal?",
+            "answer": {
+              "yes": { "complete": { "text": "YES GOAL" } },
+              "no": {
+                "next": {
+                  "question": {
+                    "value": "Are you sure you don't have a goal?",
+                    "answer": {
+                      "no": { "complete": { "text": "You have NO goal" } },
+                      "yes": { "complete": { "text": "Goal has been reached!" } }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

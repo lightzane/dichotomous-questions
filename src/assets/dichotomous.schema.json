@@ -1,0 +1,83 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$id": "dichotomous.schema.json",
+  "required": ["goal", "question"],
+  "properties": {
+    "goal": {
+      "description": "A goal in which is achieve after answering a series of question",
+      "$ref": "#/definitions/goal"
+    },
+    "question": {
+      "description": "A question object that contains `value` and `answer` properties",
+      "$ref": "#/definitions/question"
+    }
+  },
+  "definitions": {
+    "goal": {
+      "type": "string",
+      "examples": ["Some things I should do after answering a series of questions"]
+    },
+    "question": {
+      "type": "object",
+      "required": ["value", "answer"],
+      "properties": {
+        "value": {
+          "description": "The question itself. A dichotomous question that can be answered by `YES` or `NO`",
+          "type": "string",
+          "examples": ["Your question here that will be answered by `YES` or `NO`"]
+        },
+        "answer": {
+          "description": "An object that contains `YES` and `NO` properties which can lead to a next series of questions",
+          "$ref": "#/definitions/answer"
+        }
+      }
+    },
+    "answer": {
+      "type": "object",
+      "required": ["yes", "no"],
+      "additionalProperties": false,
+      "properties": {
+        "yes": {
+          "description": "Requires one property which is NEXT or COMPLETE",
+          "type": "object",
+          "$ref": "#/definitions/feedback"
+        },
+        "no": {
+          "description": "Requires one property which is NEXT or COMPLETE",
+          "type": "object",
+          "$ref": "#/definitions/feedback"
+        }
+      }
+    },
+    "feedback": {
+      "type": "object",
+      "anyOf": [{ "required": ["next"] }, { "required": ["complete"] }],
+      "maxProperties": 1,
+      "properties": {
+        "next": {
+          "description": "The next question object that contains `value` and `answer` properties",
+          "additionalProperties": false,
+          "required": ["question"],
+          "properties": {
+            "question": {
+              "$ref": "#/definitions/question"
+            }
+          }
+        },
+        "complete": {
+          "description": "Displays the goal and ends the series of question",
+          "type": "object",
+          "required": ["text"],
+          "additionalProperties": false,
+          "properties": {
+            "text": {
+              "description": "The goal value text itself",
+              "type": "string",
+              "examples": ["Goal has reached and ends the series of question"]
+            }
+          }
+        }
+      }
+    }
+  }
+}
