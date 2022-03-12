@@ -16,9 +16,13 @@ Though you can still write just in notepad but it will be harder to memorize all
 
 Write the following in your json file
 
-```json
+```
 {
-  "$schema": "https://lightzane.github.io/dichotomous-questions/assets/schema.json"
-  // Press Ctrl + SPACE here and available options will show
+  "$schema": "https://lightzane.github.io/dichotomous-questions/assets/schema.json",
+  <<< Press Ctrl + SPACE here and available options will show >>>
 }
 ```
+
+You may delete the `<<< Press Ctrl + SPACE here and available options will show >>>` afterwards.
+
+Do not forget to add a `,` comma after the URL otherwise options will not show.
