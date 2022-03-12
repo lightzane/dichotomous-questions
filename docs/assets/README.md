@@ -16,7 +16,7 @@ Write the following in your json file
 
 ```json
 {
-  "$schema": "https://lightzane.github.io/assets/schema/dichotomous.schema.json",
+  "$schema": "https://lightzane.github.io/dichotomous-questions/assets/schema.json"
   // Press Ctrl + SPACE here and available options will show
 }
 ```

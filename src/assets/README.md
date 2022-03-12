@@ -8,6 +8,8 @@ To write your own dichotomous question, the easiet way is to have [vscode](https
 
 Visual Studio Code will guide you on constructing the data since we have provided a `schema` that can be used as a reference.
 
+Though you can still write just in notepad but it will be harder to memorize all the required properties.
+
 ## Create your JSON file
 
 **your-sample.json**
